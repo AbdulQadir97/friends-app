@@ -1,12 +1,12 @@
 import React from 'react'
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../style/Style.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../config/config";
 import { useState } from "react";
-import { collection,addDoc} from "firebase/firestore";
+import { collection,addDoc, setDoc, doc} from "firebase/firestore";
 
 const SignupForm = () => {
     const navigate = useNavigate()
@@ -19,8 +19,16 @@ const SignupForm = () => {
         const createUser = await createUserWithEmailAndPassword(auth, useremail,userpass);
         if(createUser)
         {
+          await onAuthStateChanged(auth,(userId) => {
+          console.log(userId.uid)
+          const usersCollRef = collection(db, "Users");
+          if(usersCollRef.exist)
+          {}
+          const createdNewUser = setDoc(doc(usersCollRef,userId.uid),{email:useremail,name:username,password:userpass})
+
             
-            navigate('../login')
+          })
+          navigate('../login')
     
         }
         
@@ -30,17 +38,18 @@ const SignupForm = () => {
         console.log(error.message)
       }
     }
-    const usersCollectionRef = collection(db, "users");
-    const createUserCollection = async() => {
-        try{
-            const createdUser = await addDoc(usersCollectionRef,{email:useremail,name:username,password:userpass})
-            signupHandler(createdUser)
-        }
-        catch(e)
-        {
+    // const usersCollectionRef = collection(db, "users");
+    // const createUserCollection = async() => {
+    //     try{
 
-        }
-    }
+    //       //  const createdUser = await addDoc(usersCollectionRef,{email:useremail,name:username,password:userpass})
+    //         signupHandler()
+    //     }
+    //     catch(e)
+    //     {
+
+    //     }
+    // }
 
         return (
 
@@ -90,7 +99,7 @@ const SignupForm = () => {
                 />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button regBtn" onClick={createUserCollection}>
+                <Button type="primary" htmlType="submit" className="login-form-button regBtn" onClick={signupHandler}>
                   Sign-up
                 </Button>
                 Or <Link to = '/login'>Login </Link>
