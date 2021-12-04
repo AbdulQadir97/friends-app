@@ -21,7 +21,7 @@ const SignupForm = () => {
         {
           await onAuthStateChanged(auth,(userId) => {
           console.log(userId.uid)
-          const usersCollRef = collection(db, "Users");
+          const usersCollRef = collection(db, "users");
           if(usersCollRef.exist)
           {}
           const createdNewUser = setDoc(doc(usersCollRef,userId.uid),{email:useremail,name:username,password:userpass})
