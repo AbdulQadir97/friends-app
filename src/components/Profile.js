@@ -13,7 +13,7 @@ const { Header, Footer, Sider, Content } = Layout;
     useEffect(() => {
        onAuthStateChanged(auth,(userId) => {
         const  currentUserId =  userId.uid;
-        const usersCollectionRef = doc(db,'users', currentUserId)
+        const usersCollectionRef = doc(db,'users',currentUserId)
         const getUsers = async () => {
             const userdataInfo = await getDoc(usersCollectionRef);
             if(userdataInfo.exists)

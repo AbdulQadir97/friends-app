@@ -24,7 +24,7 @@ const SignupForm = () => {
           const usersCollRef = collection(db, "users");
           if(usersCollRef.exist)
           {}
-          const createdNewUser = setDoc(doc(usersCollRef,userId.uid),{email:useremail,name:username,password:userpass})
+          const createdNewUser = setDoc(doc(usersCollRef,userId.uid),{id:userId.uid, email:useremail,name:username,password:userpass})
 
             
           })

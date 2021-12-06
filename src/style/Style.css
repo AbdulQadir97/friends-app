@@ -31,3 +31,17 @@
 .loginBtn{
     background-color: #141414;
 }
+
+.inputForm{    
+    margin: 15px auto;
+    max-width: 350px;
+    border: 1px solid grey;
+    
+}
+.space-bet
+{
+    margin-left: 69%;
+}
+.myHeading {
+    text-align: center;
+}
