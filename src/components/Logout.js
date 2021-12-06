@@ -15,7 +15,7 @@ const Logout = () => {
     } 
     return (
         <div>
-            <Button type="primary" htmlType="submit" className="login-form-button regBtn loginBtn" onClick={logouthandle}>
+            <Button type="primary" htmlType="submit" className="login-form-button  loginBtn" onClick={logouthandle}>
                 Logout
             </Button>
         </div>

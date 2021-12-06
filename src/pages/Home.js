@@ -4,6 +4,7 @@ import { Layout, Menu} from 'antd';
 import { SettingOutlined }from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import '../style/Style.css';
+import Post from '../components/Post';
 
 const { Header, Content, Footer } = Layout;
 const Home = () => {
@@ -19,8 +20,9 @@ const Home = () => {
     </Header>
     <Content className="profile">
     <Profile className="profile" />
-     
+   
     </Content>
+    <Post/>
 
   </Layout>
          
