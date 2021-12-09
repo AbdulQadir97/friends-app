@@ -4,7 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../style/Style.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../config/config";
+import { auth } from "../config/config";
 import { useState } from "react";
 //import { collection,addDoc} from "firebase/firestore";
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from 'antd'
-import { auth, db } from "../config/config";
+import { auth } from "../config/config";
 import { signOut } from '@firebase/auth';
 import { useNavigate } from 'react-router';
 

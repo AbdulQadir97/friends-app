@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import '../style/Style.css';
 import Post from '../components/Post';
 
-const { Header, Content, Footer } = Layout;
+const { Header, Content} = Layout;
 const Home = () => {
     return (
         <div>
