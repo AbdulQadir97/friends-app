@@ -1,7 +1,7 @@
 import React from 'react'
 import { onAuthStateChanged } from '@firebase/auth';
 import { useState, useEffect } from 'react';
-import { getDoc, collection, doc, getDocs } from '@firebase/firestore';
+import { getDoc, collection, doc, getDocs, onSnapshot } from '@firebase/firestore';
 import { db, auth } from '../config/config';
 import { Row, Col } from 'antd';
 
