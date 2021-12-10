@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/friends-app/static/css/main.902951c3.chunk.css",
-    "main.js": "/friends-app/static/js/main.35f2e0fe.chunk.js",
-    "main.js.map": "/friends-app/static/js/main.35f2e0fe.chunk.js.map",
-    "runtime-main.js": "/friends-app/static/js/runtime-main.7a0f8571.js",
-    "runtime-main.js.map": "/friends-app/static/js/runtime-main.7a0f8571.js.map",
+    "main.css": "/friends-app/static/css/main.7909d070.chunk.css",
+    "main.js": "/friends-app/static/js/main.7021e749.chunk.js",
+    "main.js.map": "/friends-app/static/js/main.7021e749.chunk.js.map",
+    "runtime-main.js": "/friends-app/static/js/runtime-main.980adc6a.js",
+    "runtime-main.js.map": "/friends-app/static/js/runtime-main.980adc6a.js.map",
     "static/css/2.2b8316e7.chunk.css": "/friends-app/static/css/2.2b8316e7.chunk.css",
-    "static/js/2.09d590bd.chunk.js": "/friends-app/static/js/2.09d590bd.chunk.js",
-    "static/js/2.09d590bd.chunk.js.map": "/friends-app/static/js/2.09d590bd.chunk.js.map",
-    "static/js/3.3f35b940.chunk.js": "/friends-app/static/js/3.3f35b940.chunk.js",
-    "static/js/3.3f35b940.chunk.js.map": "/friends-app/static/js/3.3f35b940.chunk.js.map",
+    "static/js/2.64d91622.chunk.js": "/friends-app/static/js/2.64d91622.chunk.js",
+    "static/js/2.64d91622.chunk.js.map": "/friends-app/static/js/2.64d91622.chunk.js.map",
+    "static/js/3.46eeb6bc.chunk.js": "/friends-app/static/js/3.46eeb6bc.chunk.js",
+    "static/js/3.46eeb6bc.chunk.js.map": "/friends-app/static/js/3.46eeb6bc.chunk.js.map",
     "index.html": "/friends-app/index.html",
     "static/css/2.2b8316e7.chunk.css.map": "/friends-app/static/css/2.2b8316e7.chunk.css.map",
-    "static/css/main.902951c3.chunk.css.map": "/friends-app/static/css/main.902951c3.chunk.css.map",
-    "static/js/2.09d590bd.chunk.js.LICENSE.txt": "/friends-app/static/js/2.09d590bd.chunk.js.LICENSE.txt"
+    "static/css/main.7909d070.chunk.css.map": "/friends-app/static/css/main.7909d070.chunk.css.map",
+    "static/js/2.64d91622.chunk.js.LICENSE.txt": "/friends-app/static/js/2.64d91622.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7a0f8571.js",
+    "static/js/runtime-main.980adc6a.js",
     "static/css/2.2b8316e7.chunk.css",
-    "static/js/2.09d590bd.chunk.js",
-    "static/css/main.902951c3.chunk.css",
-    "static/js/main.35f2e0fe.chunk.js"
+    "static/js/2.64d91622.chunk.js",
+    "static/css/main.7909d070.chunk.css",
+    "static/js/main.7021e749.chunk.js"
   ]
 }
