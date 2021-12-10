@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Input, Button} from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '../style/Style.css';
+import '../style/style.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/config";
@@ -29,17 +29,11 @@ const Loginform = () => {
       }
     }
    
-
         return (
 
-            <Form
-              name="normal_login"
-              className="login-form regForm"
-             
-            >
-              
-              
-              
+            <Form className="form-flex">
+               <h1>Login Now!</h1>
+
               <Form.Item
                 name="email"
                 rules={[
@@ -68,11 +62,12 @@ const Loginform = () => {
                 />
               </Form.Item>
               <Form.Item>
-                <Button type="primary" htmlType="submit" className="login-form-button regBtn loginBtn" onClick={loginHandler}>
-                 Login
-                </Button>
-                Or <Link to = '/'>Signup </Link>
-              </Form.Item>
+        <div  className='btn-link'>
+        <Button onClick={loginHandler}>LOGIN</Button>
+        <p>OR</p>
+        <Link to='/'><p>Signup</p></Link>
+        </div>
+      </Form.Item>
             </Form>
           );
     

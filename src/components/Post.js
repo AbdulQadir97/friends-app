@@ -4,7 +4,7 @@ import { auth, db, storage } from "../config/config";
 import { useState } from "react";
 import { collection, setDoc, doc } from "firebase/firestore";
 import { Button, Modal, Input } from "antd";
-import '../style/Style.css'
+import '../style/style.scss';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const { TextArea } = Input;
 

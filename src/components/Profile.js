@@ -1,11 +1,9 @@
 import React from 'react'
-import {  Avatar } from 'antd'
-import { UserOutlined} from '@ant-design/icons';
 import { onAuthStateChanged } from '@firebase/auth';
 import { useState, useEffect } from 'react';
 import { getDoc, collection, doc, getDocs } from '@firebase/firestore';
 import { db, auth } from '../config/config';
-import Logout from './Logout';
+
 
 
 const Profile = () => {
@@ -52,11 +50,12 @@ const Profile = () => {
     return (
         <div>
 
-            <div>
+            <div className='profile'>
                 <img src={users.profileUrl} alt={users.name + "pic"}/>
+                <h1>Bio:{users.bio}</h1>
                 <h1>Name: {users.name}</h1>
                 <h1>Email: {users.email}</h1>
-                <Logout />
+                
 
 
             </div>
