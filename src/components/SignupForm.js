@@ -23,15 +23,16 @@ const SignupForm = () => {
     try {
       const createUser = await createUserWithEmailAndPassword(auth, useremail, userpass);
       if (createUser) {
-        onAuthStateChanged(auth, (userId) => {
-          console.log(userId.uid)
+        onAuthStateChanged(auth, (userInfo) => {
+          console.log(userInfo.uid)
+         ;
           const usersCollRef = collection(db, "users");
           const sotrageRef = ref(storage, `userImages/${userprofile.name}`);
           const uploadTask = uploadBytesResumable(sotrageRef,userprofile);
           uploadTask.on('state_changed', () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-              setDoc(doc(usersCollRef, userId.uid), { id: userId.uid, name: username,  email: useremail,password: userpass, bio:userbio, profileUrl: downloadUrl })
-
+              setDoc(doc(usersCollRef, userInfo.uid), { id: userInfo.uid, name:  userInfo.displayName = username,  email: useremail,password: userpass, bio:userbio, profileUrl: downloadUrl })
+              
             })
           })
 

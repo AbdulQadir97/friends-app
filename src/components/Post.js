@@ -3,7 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth, db, storage } from "../config/config";
 import { useState } from "react";
 import { collection, setDoc, doc } from "firebase/firestore";
-import { Button, Modal, Input } from "antd";
+import { Button, Modal, Input} from "antd";
 import '../style/style.scss';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 const { TextArea } = Input;
@@ -23,14 +23,15 @@ const Post = () => {
 
     const postHanlder = () => {
         setIsModalVisible(false);
-        onAuthStateChanged(auth, (userId) => {
-            console.log(userId.uid)
+        onAuthStateChanged(auth, (userInfo) => {
+            console.log(userInfo.uid)
+            console.log(userInfo.displayName)
             const postCollRef = collection(db, "posts");
-            const sotrageRef = ref(storage, `files/${newFile.name}`);
+            const sotrageRef = ref(storage, `postImage/${newFile.name}`);
             const uploadTask = uploadBytesResumable(sotrageRef, newFile);
             uploadTask.on('state_changed', ()=>{
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl)=>{
-                   setDoc(doc(postCollRef), { userpost: newPost, imageUrl: downloadUrl })
+                   setDoc(doc(postCollRef), { userpost: newPost, imageUrl: downloadUrl})
                 })
             })
             
@@ -57,10 +58,10 @@ const Post = () => {
                 <TextArea rows={4} onChange={(e) => { setPost(e.target.value) }} />
                 <Input type='file' onChange={(e)=>{setFile(e.target.files[0])}} />
             </Modal>
-            
+
         </div>
     )
 
 }
 
-export default Post
+export default Post;

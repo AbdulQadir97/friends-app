@@ -18,7 +18,8 @@ const Loginform = () => {
         if(createUser)
         {
             
-            navigate('../home')
+            
+          navigate('../home')
     
         }
         

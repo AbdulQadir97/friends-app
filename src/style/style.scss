@@ -115,5 +115,33 @@ body {
 
       }
  
-  
+.post-container
+{
+    color: #262626;
+    text-align: center;
+    max-width: 800px;
+    padding: 25px;
+}
+
+.post-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 750px;
+    height: auto;
+    border: #262626 solid 1px;
+    box-shadow: 5px 5px 5px grey;
+    padding: 50px;
+    margin: 10px;
+    div{
+        padding: 10px;
+        img{
+            width: 350px;
+            height: 350px;
+        }
+
+    }
+
+}
   

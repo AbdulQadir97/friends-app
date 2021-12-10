@@ -17,13 +17,14 @@ const Home = () => {
       <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
         <Menu.Item key="1">Profile</Menu.Item>
         <Menu.Item key="2"><Link to = './settings'><SettingOutlined /></Link></Menu.Item>
-        <Menu.Item key="2"><Logout/></Menu.Item>
+        <Menu.Item key="3"><Logout/></Menu.Item>
+        <Menu.Item key="4"> <Post/></Menu.Item>
       </Menu>
     </Header>
 
   </Layout>
   <Profile/>
-    <Post/>
+   
          
         </div>
     )
