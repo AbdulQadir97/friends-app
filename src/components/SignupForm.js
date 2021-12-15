@@ -3,7 +3,7 @@ import { Form, Input, Button } from 'antd';
 import { } from '@ant-design/icons';
 import '../style/style.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../config/config";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { useState } from "react";
@@ -17,29 +17,27 @@ const SignupForm = () => {
   const [userpass, setUserPass] = useState('');
   const [userbio, setBio] = useState('');
   const [userprofile, setProfile] = useState('');
+  const [profileUrl, setUrl] = useState('')
   console.log(userprofile)
   const signupHandler = async () => {
-
     try {
-      const createUser = await createUserWithEmailAndPassword(auth, useremail, userpass);
-      if (createUser) {
+        await createUserWithEmailAndPassword(auth, useremail, userpass);
         onAuthStateChanged(auth, (userInfo) => {
-          console.log(userInfo.uid)
-         ;
           const usersCollRef = collection(db, "users");
           const sotrageRef = ref(storage, `userImages/${userprofile.name}`);
-          const uploadTask = uploadBytesResumable(sotrageRef,userprofile);
+          const uploadTask = uploadBytesResumable(sotrageRef, userprofile);
           uploadTask.on('state_changed', () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-              setDoc(doc(usersCollRef, userInfo.uid), { id: userInfo.uid, name:  userInfo.displayName = username,  email: useremail,password: userpass, bio:userbio, profileUrl: downloadUrl })
-              
+              setDoc(doc(usersCollRef, userInfo.uid), { id: userInfo.uid, name: username, email: useremail, password: userpass, bio: userbio, profileUrl: userInfo.photoURL = downloadUrl })
+              setUrl(downloadUrl)
             })
           })
-
+        })
+        updateProfile(auth.currentUser,{
+          displayName: username,
         })
         navigate('../login')
 
-      }
 
     }
     catch (error) {
@@ -79,7 +77,7 @@ const SignupForm = () => {
       >
         <Input placeholder="Please input your E-mail!" onChange={(e) => { setUserEmail(e.target.value) }} />
       </Form.Item>
-      
+
       <Form.Item
         name="password"
         rules={[
@@ -101,38 +99,26 @@ const SignupForm = () => {
         name="bio"
         rules={[{ required: true, message: 'Please input bio' }]}
       >
-        <Input.TextArea 
-        showCount maxLength={50} 
-        placeholder='Bio...' 
-        onChange={(e) => { setBio(e.target.value) }}/>
+        <Input.TextArea
+          showCount maxLength={50}
+          placeholder='Bio...'
+          onChange={(e) => { setBio(e.target.value) }} />
       </Form.Item>
-      
+
       <Form.Item>
-
-
-
-
-
-
-
-
-
-        
-  
         <Input
 
           className="choose-file"
           type='file'
-          
           onChange={(e) => { setProfile(e.target.files[0]) }}
         />
       </Form.Item>
 
       <Form.Item>
-        <div  className='btn-link'>
-        <Button onClick={signupHandler}>SIGN UP</Button>
-        <p>OR</p>
-        <Link to='/login'><p>Login</p></Link>
+        <div className='btn-link'>
+          <Button onClick={signupHandler}>SIGN UP</Button>
+          <p>OR</p>
+          <Link to='/login'><p>Login</p></Link>
         </div>
       </Form.Item>
     </Form>

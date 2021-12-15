@@ -10,7 +10,7 @@ return(
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/home/settings" element={<Setting />} />
+        <Route path="/settings" element={<Setting />} />
     </AppRoutes>
 
 )

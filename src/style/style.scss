@@ -95,7 +95,7 @@ body {
     
             Input{
                 text-align: center;
-                font-weight: bolder;
+                font-weight: 200;
                 font-size: 15px;
                 font-style: italic;        
                        
@@ -134,11 +134,14 @@ body {
     box-shadow: 5px 5px 5px grey;
     padding: 50px;
     margin: 10px;
+    .createdBy{
+        text-align: left;
+    }
     div{
         padding: 10px;
         img{
-            width: 350px;
-            height: 350px;
+            width: 300px;
+            height: 300px;
         }
 
     }

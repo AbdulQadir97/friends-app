@@ -10,7 +10,7 @@ const Logout = () => {
         if(signOut(auth))
         {
             alert("Signning OFF")
-            navigate('../login')
+            navigate('/login')
         }
     } 
     return (
