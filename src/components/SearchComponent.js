@@ -11,39 +11,34 @@ const { Search } = Input;
 const SearchComponent = () => {
 
    const [searchQuery,setSearchQuery] = useState(['']);
-   const [users, setSearchAble] = useState([''])
-   const onSearch = ()=>{
-       console.log(searchQuery)
-   }
-
-
-  
-
-
+   const [usersSearch, setSearchAble] = useState([''])
     useEffect(() => {
      
             //const currentUserId = userInfo.uid;
             const queryColl = collection(db, "users");
-            console.log(queryColl)
             const getUsers = async () => {
                 const userdataInfo = await getDocs(queryColl);
-                
-                userdataInfo.docs.map((doc) => {
-    
-                  const userData = doc.data();
-                  const searchAble = [userData.name,userData.email]
-               //   console.log(searchAble)
-                   return setSearchAble(searchAble)
-                 
-                  });       
+                console.log(userdataInfo.docs)
+                const dataUser = userdataInfo.docs.map((doc) => ({...doc.data()}))
+                setSearchAble(dataUser)         
             };
 
             getUsers();
         
     }, [])
 
-    console.log(users)
-
+    console.log (usersSearch)
+    const userName = usersSearch.map((nameOfUser => nameOfUser.name))
+    console.log(userName)
+    const onSearch = ()=> {
+    userName.filter(
+        (searchData) => {
+            if(searchData===searchQuery){
+                alert(searchData)
+                return searchData
+            }
+        }
+    )}
 
     return (
         <div>
@@ -52,8 +47,8 @@ const SearchComponent = () => {
                 placeholder="input search text"
                 enterButton="Search"
                 size="large"
-                onSearch={onSearch}
                 onChange={(e)=>{setSearchQuery(e.target.value)}}
+                onSearch={onSearch}
                 /> 
 
         </div>
