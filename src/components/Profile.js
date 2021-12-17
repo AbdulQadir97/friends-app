@@ -10,20 +10,16 @@ import { Row, Col } from 'antd';
 const Profile = () => {
 
     const [newPost, setPosts] = useState([""])
-    const [photoUrl,setPhotoUrl] = useState([''])
-    const [userUID, setUserId]= useState('')
     const [userDisplayName, setUserDisplayName]= useState('')
     useEffect(() => {
         onAuthStateChanged(auth, (userInfo) => {
-            setUserId(userInfo.uid)
             setUserDisplayName(userInfo.displayName)
             })
-            //setPhotoUrl(userInfo.photoURL)
             const postsCollectionRef = collection(db, 'posts')
             const getPost = async () => {
                 await onSnapshot((postsCollectionRef), (posts) => {
                     const new_Post = posts.docs.map((doc) => ({ ...doc.data() }));
-                    // setPosts(new_Post)
+                    setPosts(new_Post)
                 });
             };
 

@@ -12,6 +12,7 @@ const Loginform = () => {
     const navigate = useNavigate()
     const [useremail, setUserEmail] = useState('');
     const [userpass, setUserPass] = useState('');
+  //  const [errorMessage, setErrorMeassage] = useState('')
     const  loginHandler = async() => {
         try{
         const createUser = await signInWithEmailAndPassword(auth, useremail,userpass);
@@ -24,9 +25,9 @@ const Loginform = () => {
         }
         
       }
-      catch(error)
+      catch(e)
       {
-        console.log(error.message)
+      console.log(e.message)
       }
     }
    
@@ -34,7 +35,6 @@ const Loginform = () => {
 
             <Form className="form-flex">
                <h1>Login Now!</h1>
-
               <Form.Item
                 name="email"
                 rules={[

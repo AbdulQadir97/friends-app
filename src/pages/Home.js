@@ -6,7 +6,7 @@ import { SettingOutlined }from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import '../style/style.scss';
 import Post from '../components/Post';
-//import SearchComponent from '../components/SearchComponent';
+import SearchComponent from '../components/SearchComponent';
 
 const { Header,} = Layout;
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
         <Menu.Item ><Link to = '../settings'><SettingOutlined /></Link></Menu.Item>
         <Menu.Item ><Logout/></Menu.Item>
         <Menu.Item > <Post/></Menu.Item>
-        {/* <Menu.Item key="5"> <SearchComponent/></Menu.Item> */}
+        <Menu.Item key="5"> <SearchComponent/></Menu.Item>
       </Menu>
     </Header>
 

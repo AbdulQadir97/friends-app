@@ -17,7 +17,7 @@ const SignupForm = () => {
   const [userpass, setUserPass] = useState('');
   const [userbio, setBio] = useState('');
   const [userprofile, setProfile] = useState('');
-  const [profileUrl, setUrl] = useState('')
+ // const [profileUrl, setUrl] = useState('')
   console.log(userprofile)
   const signupHandler = async () => {
     try {
@@ -29,7 +29,7 @@ const SignupForm = () => {
           uploadTask.on('state_changed', () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
               setDoc(doc(usersCollRef, userInfo.uid), { id: userInfo.uid, name: username, email: useremail, password: userpass, bio: userbio, profileUrl: userInfo.photoURL = downloadUrl })
-              setUrl(downloadUrl)
+              // setUrl(downloadUrl)
             })
           })
         })
