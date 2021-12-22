@@ -9,7 +9,7 @@ import { Row, Col } from 'antd';
 
 const Profile = () => {
 
-    const [newPost, setPosts] = useState([""])
+    const [newPost, setPosts] = useState([])
     const [userDisplayName, setUserDisplayName]= useState('')
     useEffect(() => {
         onAuthStateChanged(auth, (userInfo) => {

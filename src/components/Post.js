@@ -13,7 +13,7 @@ const Post = () => {
     const [newPost, setPost] = useState('');
     const [newFile, setFile] = useState(null);
     const [userDisplayName, setUserDisplayName] = useState('')
-    const [imageURL, setImageURL] = useState('')
+    const [postPic, setImageURL] = useState('')
 
 
     onAuthStateChanged(auth, (userInfo) => {
@@ -23,22 +23,20 @@ const Post = () => {
         setIsModalVisible(true);
     };
 
-    const postHanlder = () => {
+    const postHanlder =() => {
 
         setIsModalVisible(false);
         const postCollRef = collection(db, "posts");
         const sotrageRef = ref(storage, `postImage/${newFile.name}`);
         const uploadTask = uploadBytesResumable(sotrageRef, newFile);
-        uploadTask.on('', () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-                const imageFirebaseURL = downloadUrl
-                setImageURL(imageFirebaseURL)
-                console.log(imageFirebaseURL)
+        uploadTask.on('', async () => {
+            await getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+                setImageURL(downloadUrl)
             })
         })
 
 
-        setDoc(doc(postCollRef), { postCreated: userDisplayName, userpost: newPost, imageUrl: imageURL })
+        setDoc(doc(postCollRef), { postCreated: userDisplayName, userpost: newPost, imageUrl: postPic })
     };
 
     const handleCancel = () => {
